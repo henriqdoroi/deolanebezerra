@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Duplinha Camarada | Vakinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    :root{
+      --vk-green:#20c768;
+      --vk-green-dark:#00a85a;
+      --vk-green-soft:#ebfde7;
+      --vk-text:#333333;
+      --vk-text-2:#444444;
+      --vk-muted:#777777;
+      --vk-muted-2:#9a9a9a;
+      --vk-bg:#f7f7f7;
+      --vk-white:#ffffff;
+      --vk-border:#e5e5e5;
+      --vk-link:#00a6c8;
+      --vk-orange:#ff6b00;
+      --vk-footer:#262626;
+      --vk-shadow:0 2px 8px rgba(0,0,0,.13);
+      --page-max:416px;
+      --gutter:14px;
+      --radius:7px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{width:100%;min-height:100%;background:#fff;scroll-behavior:smooth}
+    body{width:100%;min-height:100%;background:#fff;color:var(--vk-text);font-family:'Lato',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.45;display:flex;justify-content:center}
+    button,a{font:inherit;color:inherit;background:none;border:0;text-decoration:none;cursor:pointer}
+    img{display:block;max-width:100%}
+
+    .app{width:100%;max-width:var(--page-max);min-height:100vh;background:var(--vk-bg);overflow:hidden;position:relative}
+
+    .header{height:88px;background:#fff;border-bottom:1px solid #e9e9e9;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:50}
+    .brand{display:flex;align-items:center;gap:8px;color:var(--vk-green);font-size:24px;font-weight:900;line-height:1;letter-spacing:-1.18px}
+    .brand-icon{width:33px;height:33px;border-radius:6px;background:var(--vk-green);position:relative;flex:0 0 33px}
+    .brand-icon:before{content:'';position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;left:7px;top:8px;box-shadow:14px 0 0 #fff,7px 15px 0 #fff}
+    .brand-icon:after{content:'';position:absolute;left:14px;top:9px;width:4px;height:17px;background:#fff;border-radius:99px;transform:rotate(31deg);box-shadow:7px -4px 0 #fff}
+    .header-actions{display:flex;align-items:center;gap:22px;color:#555}.header-actions .search{font-size:24px;color:var(--vk-green)}.header-actions .menu{font-size:25px;color:#555}
+
+    .hero-area{padding:10px var(--gutter) 0;background:var(--vk-bg)}
+    .hero-card{background:#fff;border-radius:6px;padding:16px 16px 17px;margin-bottom:21px}
+    .hero-image{height:177px;border-radius:4px;overflow:hidden;position:relative;background:linear-gradient(135deg,#d8d8d8,#eeeeee)}
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.96) contrast(.98)}
+    .heart-float{position:absolute;right:10px;top:12px;width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#d1d1d1;font-size:24px;box-shadow:0 2px 5px rgba(0,0,0,.28)}
+    .category{margin-top:15px;text-transform:uppercase;color:#8f8f8f;font-size:10px;font-weight:400;letter-spacing:.04px}
+    h1{font-size:24px;line-height:1.14;font-weight:900;color:#303030;margin-top:5px;letter-spacing:-.36px}
+    .campaign-id{font-size:14px;font-weight:900;color:#454545;margin-top:9px}
+    .intro{font-size:12.7px;line-height:1.43;color:#666;margin-top:16px;font-weight:400}.intro .link{color:var(--vk-link);font-weight:900}
+    .seal-cta{height:39px;background:#fafafa;border-radius:7px;margin-top:15px;padding:0 10px;display:flex;align-items:center;gap:11px;color:#444;font-size:12.5px;font-weight:900}.seal-cta span{text-decoration:underline}.seal{width:30px;height:30px;border-radius:50%;background:#ef5269;color:#fff;display:grid;place-items:center;font-size:15px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.25)}
+
+    .tabs-outer{background:var(--vk-bg);padding:0 var(--gutter);overflow:hidden}.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;min-width:64px;text-align:center;color:#444;font-size:16px;font-weight:400;padding:10px 0 12px;border-bottom:2px solid #dedede}.tab.is-active{color:var(--vk-green);font-weight:900;border-bottom-color:var(--vk-green)}
+    .tab-panel{display:none}.tab-panel.is-active{display:block}
+
+    .content-card{margin:14px var(--gutter) 0;background:#fff;border-radius:var(--radius)}
+    .about-card{padding:38px 15px 0;overflow:hidden}.about-card p{font-size:13.3px;line-height:1.47;color:#333;margin:0 0 9px}.about-card b{font-weight:900}.thin-line{height:1px;background:#ddd;margin:15px 0 17px}
+    .pix-box{margin:0 var(--gutter);background:#e9e9e9;min-height:118px;padding:17px 16px;display:flex;gap:14px;color:#444;font-size:15.5px;line-height:1.43}.pix-box .fa-pix{font-size:27px;color:#000;flex:0 0 26px;margin-top:2px}.pix-box b{font-weight:900}.copy-button{text-align:center;margin-top:15px;font-size:14px;font-weight:900;text-decoration:underline;color:#444}
+
+    .notice-title{font-size:16px;color:#333;margin:39px var(--gutter) 6px}.legal{margin:0 var(--gutter);color:#9a9a9a;font-size:11.5px;line-height:1.55}.legal b{font-weight:400}
+    .donation-card{margin:0 var(--gutter) 27px;background:#fff;padding:18px 16px 12px}.amount{font-size:20px;color:var(--vk-green);font-weight:900;margin-bottom:12px}.amount span{font-size:16px;color:#8b8b8b;font-weight:400;margin-left:4px}.progress{height:4px;border-radius:99px;background:#eeeeee;overflow:hidden}.progress i{display:block;height:100%;width:.35%;background:var(--vk-orange)}.stats{margin-top:13px;background:var(--vk-green-soft);border-radius:7px;padding:12px 12px 7px}.stats-row{display:flex;justify-content:space-between;color:#333;font-size:12px;margin-bottom:9px}.stats-row b{font-weight:900}.green-heart{color:#00874c;font-size:14px}
+    .btn-primary,.btn-outline{width:100%;height:54px;border-radius:7px;font-size:21px;font-weight:900;display:grid;place-items:center}.btn-primary{margin-top:32px;background:var(--vk-green);color:#fff}.btn-outline{margin-top:8px;background:#fff;border:1.5px solid #333;color:#444}.protected{display:inline-flex;align-items:center;gap:5px;margin:26px 0 24px;border:1px solid #14b75d;border-radius:4px;padding:5px 8px;color:#009a4e;font-size:8px;font-weight:900}.protected i{font-size:15px}.owner-card{border-top:1px solid #eee;padding:24px 14px 12px;display:flex;align-items:center;gap:12px}.owner-avatar{width:37px;height:37px;border-radius:50%;background:#e83fc5;color:#fff;display:grid;place-items:center;font-size:17px;font-weight:900}.owner-card b{font-size:12px}.owner-card p{font-size:12px;color:#333;margin-top:1px}
+
+    .more-title{font-size:21px;line-height:1.35;font-weight:900;color:#303030;margin:40px var(--gutter) 24px}.story-card{margin:0 var(--gutter) 30px;background:#fff;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.18);overflow:hidden;padding-bottom:17px}.story-img{height:151px;margin:16px 16px 9px;border-radius:5px;overflow:hidden;position:relative;background:#ddd}.story-img img{width:100%;height:100%;object-fit:cover}.sponsored{position:absolute;right:0;bottom:10px;background:#ff7900;color:#fff;font-size:10px;font-weight:900;padding:5px 6px;border-radius:4px 0 0 4px}.story-card h3{font-size:16px;line-height:1.34;font-weight:900;color:#333;margin:0 16px 9px}.story-money{font-size:16px;font-weight:900;color:#ff6b00;margin:0 16px}.story-money span{color:#606060;font-weight:400}.story-card .progress{margin:8px 16px 14px}.story-card .progress i{width:2%}.story-heart{font-size:12px;color:#777;margin:0 16px}
+
+    .empty-updates{height:292px;margin:14px var(--gutter) 0;background:#fff;border-radius:7px;padding:17px 15px;color:#555;font-size:14px}
+
+    .help-box{margin:14px 30px 0;background:#fff;border-radius:3px;padding:22px 14px 23px;box-shadow:0 1px 5px rgba(0,0,0,.18)}.help-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}.help-row:last-child{margin-bottom:0}.round-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:0 0 38px;font-size:20px}.round-icon.green{background:#21c769}.round-icon.blue{background:#075fd0}.round-icon.red{background:#b10000}.help-row h4{font-size:16px;line-height:1.05;font-weight:900;color:#454545}.help-row p{font-size:14px;line-height:1.2;color:#4c4c4c}.all-support-title{text-align:center;font-size:20px;font-weight:900;margin:72px 0 22px;color:#444}.support-list{margin:0 var(--gutter);background:#fff;padding:0 10px 24px}.support-item{display:flex;align-items:center;gap:14px;padding:20px 0;border-bottom:1px solid #e8e8e8}.support-item:last-of-type{border-bottom:0}.avatar{width:48px;height:48px;border-radius:50%;background:#b10000;color:#fff;display:grid;place-items:center;font-size:23px;font-weight:900;overflow:hidden;flex:0 0 48px}.avatar.purple{background:#8b08cf}.avatar img{width:100%;height:100%;object-fit:cover}.support-main{flex:1}.support-main b{font-size:12px}.support-main p{font-size:12px;color:#555;margin-top:3px}.time{font-size:9px;color:#333;align-self:flex-start;margin-top:6px}.view-all{text-align:center;color:#008ee8;font-size:12px;margin-top:4px}
+
+    .prize-box{margin:14px var(--gutter) 0;background:#fff;border-radius:7px;padding:22px 15px 15px}.prize-box>p{font-size:13.5px;line-height:1.55;margin-bottom:19px}.prize-card{min-height:66px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.16);padding:13px 50px 13px 12px;margin-bottom:12px;position:relative;background:#fff;color:#333;font-size:13px;line-height:1.45;font-weight:900}.prize-card a{display:block;color:var(--vk-link);font-weight:400;text-decoration:underline;margin-top:8px}.prize-card i{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:27px;color:#0eb35c}.prize-card.light{background:#ebfde7}.prize-card.beige{background:#f7ead9}.prize-card.dark{background:#008443;color:#fff}.prize-card.dark i{color:#ffcd00}.prize-card.yellow{background:#ffc400;color:#111}.prize-card.yellow i{color:#006e50;background:#fff;border-radius:50%;padding:8px}
+
+    .seals-panel{height:290px;margin:14px var(--gutter) 0;background:#fff;border-radius:7px;padding:26px}.seals-panel .seal{width:52px;height:52px;font-size:24px;margin-bottom:13px}.seals-panel b,.seals-panel p{font-size:11.5px}.seals-panel b{font-weight:900}.seals-panel p{color:#333;margin-top:2px}
+
+    .faq{margin:14px var(--gutter) 30px}.faq-item{height:60px;background:#fff;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.13);margin-bottom:15px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;color:#444;font-size:14.5px;font-weight:900}.faq-item i{font-size:13px;color:#555}.faq-answer{display:none;background:#fff;margin:-10px 0 15px;padding:0 15px 15px;color:#555;font-size:13px;line-height:1.45;border-radius:0 0 6px 6px}.faq-item.open + .faq-answer{display:block}.faq-item.open i{transform:rotate(180deg)}
+
+    .footer{background:var(--vk-footer);color:#fff;padding:25px 14px 0;margin-top:26px}.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.footer .brand{color:#fff;font-size:16px;letter-spacing:-.4px}.footer .brand-icon{width:25px;height:25px;flex-basis:25px;border-radius:4px;background:#fff}.footer .brand-icon:before{background:#252525;width:4px;height:4px;left:6px;top:6px;box-shadow:10px 0 0 #252525,5px 11px 0 #252525}.footer .brand-icon:after{background:#252525;width:3px;height:13px;left:11px;top:7px;box-shadow:5px -3px 0 #252525}.socials{display:flex;gap:12px;align-items:center;font-size:15px}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}.footer h3{font-size:16px;color:var(--vk-green);font-weight:900;margin-bottom:14px}.footer a,.footer p{display:block;color:#fff;font-size:12px;font-weight:700;margin-bottom:10px;line-height:1.45}.footer .muted{color:#9c9c9c;font-weight:400}.security{width:82px;height:28px;border:1px solid #356;border-radius:14px;color:#5ad375;display:grid;place-items:center;font-size:8px;margin-top:18px}.store{width:104px;height:31px;background:#000;border:1px solid #999;border-radius:4px;margin-bottom:12px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px}.footer-bottom{margin:20px -14px 0;background:#555;text-align:center;padding:12px;font-size:12px;font-weight:700}
+
+    .desktop-aside{display:none}
+
+    @media (min-width:760px){
+      :root{--page-max:100%;--gutter:0}
+      body{background:#f7f7f7}.app{max-width:none;overflow:visible}.header{padding:0 max(24px,calc((100vw - 1120px)/2));height:82px}.page-desktop{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,690px) 360px;gap:32px;padding:24px 24px 0}.mobile-flow{min-width:0}.hero-area{padding:0;background:transparent}.hero-card{margin-bottom:18px}.tabs-outer{padding:0;background:transparent}.content-card,.pix-box,.empty-updates,.prize-box,.seals-panel,.faq,.notice-title,.legal,.donation-card,.more-title,.story-card,.support-list{margin-left:0;margin-right:0}.desktop-aside{display:block;position:sticky;top:104px;align-self:start}.desktop-aside .donation-card{margin:0}.desktop-aside .more-title,.desktop-aside .story-card{display:none}.tab-panel>.donation-card{display:none}.tab-panel>.notice-title,.tab-panel>.legal{display:none}.footer{margin-top:36px;padding-left:max(24px,calc((100vw - 1120px)/2));padding-right:max(24px,calc((100vw - 1120px)/2))}.footer-bottom{margin-left:calc(-1 * max(24px,calc((100vw - 1120px)/2)));margin-right:calc(-1 * max(24px,calc((100vw - 1120px)/2)))}.hero-image{height:330px}.story-img{height:220px}.help-box{margin-left:0;margin-right:0}.support-list{padding-left:16px;padding-right:16px}
+    }
+
+    @media (max-width:360px){
+      .brand{font-size:22px}.header-actions{gap:18px}.tab{font-size:15px}.hero-card{padding-left:14px;padding-right:14px}.intro{font-size:12.4px}.pix-box{font-size:14.6px}.amount{font-size:19px}.amount span{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand"><span class="brand-icon"></span><span>vakinha</span></div>
+      <div class="header-actions" aria-label="Ações do menu"><i class="fa-solid fa-magnifying-glass search"></i><i class="fa-solid fa-bars menu"></i></div>
+    </header>
+
+    <div class="page-desktop">
+      <div class="mobile-flow">
+        <section class="hero-area">
+          <article class="hero-card">
+            <div class="hero-image">
+              <img src="https://images.unsplash.com/photo-1596854273338-cbf078ec7071?q=80&w=900&auto=format&fit=crop" alt="Criança segurando um gato">
+              <button class="heart-float" aria-label="Favoritar"><i class="fa-solid fa-heart"></i></button>
+            </div>
+            <div class="category">SAÚDE / TRATAMENTOS</div>
+            <h1>Duplinha Camarada</h1>
+            <div class="campaign-id">ID: 6132803</div>
+            <p class="intro">Olá! Esses são o Davi e o Fiapico, a “Duplinha Camarada” — é assim que chamamos eles.O Davi mesmo tendo nascido com Imunodeficiência primária era um garoto muito brincalhão e alegre. Por isso decidimos comprar um gato, o Fiapico, um filhote <span class="link">ver tudo</span></p>
+            <button class="seal-cta"><span class="seal"><i class="fa-solid fa-award"></i></span><span>Ver selos</span></button>
+          </article>
+        </section>
+
+        <nav class="tabs-outer" aria-label="Abas da vaquinha">
+          <div class="tabs">
+            <button class="tab is-active" data-tab="sobre">Sobre</button>
+            <button class="tab" data-tab="atualizacoes">Atualizações</button>
+            <button class="tab" data-tab="ajudou">Quem ajudou</button>
+            <button class="tab" data-tab="premiada">Vakinha Premiada</button>
+            <button class="tab" data-tab="selos">Selos recebidos</button>
+            <button class="tab" data-tab="perguntas">Perguntas e Respostas</button>
+          </div>
+        </nav>
+
+        <section id="sobre" class="tab-panel is-active">
+          <div class="content-card about-card">
+            <p>Você pode ajudar via Pix usando a chave:</p>
+            <p><b>6132803@vakinha.com.br</b> <i class="fa-regular fa-copy"></i></p>
+            <div class="thin-line"></div>
+            <p><b>Vaquinha criada em:</b> 20/05/2026</p>
+            <p>Olá! Esses são o Davi e o Fiapico, a “Duplinha Camarada” — é assim que chamamos eles.</p>
+            <p>O Davi mesmo tendo nascido com Imunodeficiência primária era um garoto muito brincalhão e alegre. Por isso decidimos comprar um gato, o Fiapico, um filhote que logo se tornou o melhor amigo do Davi.</p>
+            <p>Camarada é uma palavra que o Davi gosta muito, o tio dele sempre falou isso, e ele gostava de imitar, “caaada”, é desse jeito que ele fala; por isso que eu chamo eles de Duplinha Camarada.</p>
+            <p>Achava que seria isso para sempre. Mas Deus tinha outros planos para a gente, o Fiapico começou a ficar estranho depois de ter ido pro quintal: não queria comer e tava dormindo muito.</p>
+            <p>não pensei que seria algo grave mas isso foi um erro; quando o Fiapico piorou e começou a ter diarréia nós o levamos para o veterinário, o que já tinha sido uma hora ruim, porque o Davi já tava com febre.</p>
+            <p>Quando os exames acabaram, o resultado veio: Toxoplasmose. Como os exames foram feitos inicialmente na rede pública, isso demorou mais do que deveria.</p>
+            <p>O parasita agravou e não tivemos escolha se não escolher o tratamento particular. Por isso vim aqui pedir ajuda de vocês, eu me sinto impotente ao ver o meu filho e o nosso animal de estimação nessa situação.</p>
+            <p>Eu pedi uma especulação detalhada para poder entender o que poderíamos fazer e para explicar, por isso deixarei do quanto isso pode custar, os valores podem ser maiores se a saúde deles se agravar.</p>
+            <p>Diárias da UTI Pediátrica/ Exames de imagem e laboratório/ Visitas diárias e medicamentos hospitalares, podem tá indo pra um total de 50 a 60 mil para o Davi.</p>
+            <p>Internação 24h/ consultas e especialistas/ exames/medicamentos, podem tá custando de 9 a 10 mil para o Fiapico.</p>
+          </div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+
+        <section id="atualizacoes" class="tab-panel">
+          <div class="empty-updates">Não existem atualizações neste momento.</div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+
+        <section id="ajudou" class="tab-panel">
+          <div class="help-box">
+            <div class="help-row"><div class="round-icon green"><i class="fa-solid fa-hand-holding-heart"></i></div><div><h4>Contribuições</h4><p>9 pessoas doaram</p></div></div>
+            <div class="help-row"><div class="round-icon green"><i class="fa-solid fa-hands-holding-child"></i></div><div><h4>Adotantes</h4><p>Quer adotar essa vaquinha? Clique aqui!</p></div></div>
+            <div class="help-row"><div class="round-icon blue"><i class="fa-solid fa-hand-holding-dollar"></i></div><div><h4>Promotores do Bem</h4><p>Compartilhe a vaquinha, traga doações e se torne Promotor do Bem</p></div></div>
+            <div class="help-row"><div class="round-icon red"><i class="fa-regular fa-heart"></i></div><div><h4>Corações</h4><p>Esta vaquinha recebeu 1032 corações no total e já esteve na lista de mais amadas da semana 1 vez</p></div></div>
+          </div>
+          <h2 class="all-support-title">Todos os apoios</h2>
+          <div class="support-list">
+            <div class="support-item"><div class="avatar">CO</div><div class="support-main"><b>Claudio</b><p>Deu corações</p></div><div class="time">2 horas</div></div>
+            <div class="support-item"><div class="avatar"><img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?q=80&w=200&auto=format&fit=crop" alt=""></div><div class="support-main"><b>Anaa</b><p>Deu corações</p></div><div class="time">3 horas</div></div>
+            <div class="support-item"><div class="avatar purple">LS</div><div class="support-main"><b>Leila</b><p>Deu corações</p></div><div class="time">3 horas</div></div>
+            <div class="support-item"><div class="avatar">SS</div><div class="support-main"><b>Samuel S.</b><p>Contribuiu</p></div><div class="time">9 horas</div></div>
+            <div class="support-item"><div class="avatar">SC</div><div class="support-main"><b>Sara C.</b><p>Deu corações</p></div><div class="time">11 horas</div></div>
+            <div class="support-item"><div class="avatar"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop" alt=""></div><div class="support-main"><b>Joice</b><p>Deu corações</p></div><div class="time">15 horas</div></div>
+            <div class="view-all">Ver todos os apoios</div>
+          </div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+
+        <section id="premiada" class="tab-panel">
+          <div class="prize-box">
+            <p>Cada ação no Vakinha pode garantir números da sorte para concorrer todos os meses a R$ 15 MIL nos sorteios do Vakinha Premiada</p>
+            <div class="prize-card">4 pessoas já doaram e receberam números da sorte<a>Quero doar e participar</a><i class="fa-solid fa-ticket"></i></div>
+            <div class="prize-card light">1 doador turbinou sua doação e recebeu números da sorte extra<i class="fa-solid fa-bolt"></i></div>
+            <div class="prize-card beige">358 pessoas compraram corações para destacar essa vaquinha e receberam números da sorte<a>Comprar corações</a><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <div class="prize-card dark">4 doadores, além de ajudar e concorrer, garantiram números da sorte extra para quem criou a vaquinha<i class="fa-solid fa-tag"></i></div>
+            <div class="prize-card">0 pessoas doaram para essa vaquinha e ainda não resgataram seus números<a>Verificar números para resgate</a><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <div class="prize-card yellow">0 pessoas já ganharam o prêmio com números gerados nessa vaquinha<i class="fa-solid fa-trophy"></i></div>
+          </div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+
+        <section id="selos" class="tab-panel">
+          <div class="seals-panel"><div class="seal"><i class="fa-solid fa-award"></i></div><b>Mais amada das últimas 24h</b><p>Selo recebido 3x</p></div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+
+        <section id="perguntas" class="tab-panel">
+          <div class="faq">
+            <button class="faq-item">Como ajudar Maria Nascimento? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Clique em “Quero Ajudar” ou use a chave Pix informada na página.</div>
+            <button class="faq-item">Quando a vaquinha foi criada? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">A vaquinha foi criada em 20/05/2026.</div>
+            <button class="faq-item">Qual a meta da vaquinha Duplinha Camarada? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">A meta exibida é de R$ 80.000,00.</div>
+            <button class="faq-item">Como posso ajudar via chave PIX? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Use a chave 6132803@vakinha.com.br no Pix.</div>
+            <button class="faq-item">Quanto a vaquinha já arrecadou? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">A página exibe R$ 257,00 arrecadados.</div>
+          </div>
+          <div data-pix></div>
+          <div data-bottom></div>
+        </section>
+      </div>
+
+      <aside class="desktop-aside">
+        <div data-bottom-aside></div>
+      </aside>
+    </div>
+
+    <template id="pix-template">
+      <div class="pix-box"><i class="fa-brands fa-pix"></i><div>Você também pode <b>contribuir via Pix usando a chave:</b> 6132803@vakinha.com.br<div class="copy-button">Copiar&nbsp; <i class="fa-regular fa-copy"></i></div></div></div>
+    </template>
+
+    <template id="bottom-template">
+      <div class="notice-title">Denunciar essa vaquinha</div>
+      <p class="legal"><b>AVISO LEGAL:</b> O texto e as imagens incluídos nessa página são de única e exclusiva responsabilidade do criador da vaquinha e não representam a opinião ou endosso da plataforma Vakinha.</p>
+      <div class="donation-card">
+        <div class="amount">R$ 257,00 <span>de R$ 80.000,00</span></div>
+        <div class="progress"><i></i></div>
+        <div class="stats"><div class="stats-row"><span>Corações Recebidos <span class="green-heart">♥</span></span><b>1032</b></div><div class="stats-row"><span>Apoiadores</span><b>9</b></div></div>
+        <button class="btn-primary">Quero Ajudar</button>
+        <button class="btn-outline">Compartilhar</button>
+        <div class="protected"><i class="fa-solid fa-shield-heart"></i> DOAÇÃO PROTEGIDA</div>
+        <div class="owner-card"><div class="owner-avatar">MN</div><div><b>Maria Nascimento</b><p>Ativo(a) desde maio/2026</p></div></div>
+      </div>
+      <h2 class="more-title">Outras histórias também precisam de você!</h2>
+      <article class="story-card">
+        <div class="story-img"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop" alt="Associação"><button class="heart-float" aria-label="Favoritar"><i class="fa-solid fa-heart"></i></button><div class="sponsored">Vaquinha Patrocinada</div></div>
+        <h3>Ajude na perfuração do poço da Associação da Pérola do Maicá.</h3>
+        <div class="story-money">R$ 190,00 <span>de 10 mil</span></div>
+        <div class="progress"><i></i></div>
+        <div class="story-heart">0 corações recebidos 🤎</div>
+      </article>
+    </template>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="brand"><span class="brand-icon"></span><span>vakinha</span></div>
+        <div class="socials"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-youtube"></i><span>|</span><i class="fa-brands fa-x-twitter"></i><span>|</span><i class="fa-brands fa-tiktok"></i></div>
+      </div>
+      <div class="footer-grid">
+        <div><h3>Links rápidos</h3><a>Quem somos</a><a>Vaquinhas</a><a>Criar vaquinhas</a><a>Login</a><a>Vaquinhas mais amadas</a><a>Política de privacidade</a><a>Termos de uso</a><a>Verificação de links</a></div>
+        <div style="padding-top:31px"><a>Dúvidas frequentes</a><a>Taxas e prazos</a><a>Loja de corações</a><a>Vakinha Premiada</a><a>Blog do Vakinha</a><a>Mapa de posts do blog</a><a>Segurança e transparência</a><a>Busca por recibo</a></div>
+        <div><h3>Fale conosco</h3><p>Clique aqui para falar conosco</p><p>De Segunda à Sexta<br>Das 9:30 às 17:00</p><div class="security">SELO DE SEGURANÇA</div></div>
+        <div><h3>Baixe nosso App</h3><div class="store"><i class="fa-brands fa-google-play"></i>&nbsp; Google Play</div><div class="store"><i class="fa-brands fa-apple"></i>&nbsp; App Store</div><p class="muted">Vakinha.com.br<br>CNPJ 22.831.673/0001-26<br>Porto Alegre - RS</p></div>
+      </div>
+      <div class="footer-bottom">© 2026 - Todos direitos reservados</div>
+    </footer>
+  </main>
+
+  <script>
+    const pixTemplate = document.getElementById('pix-template');
+    document.querySelectorAll('[data-pix]').forEach((target)=>target.replaceWith(pixTemplate.content.cloneNode(true)));
+
+    const bottomTemplate = document.getElementById('bottom-template');
+    document.querySelectorAll('[data-bottom]').forEach((target)=>target.replaceWith(bottomTemplate.content.cloneNode(true)));
+    const asideTarget = document.querySelector('[data-bottom-aside]');
+    if(asideTarget) asideTarget.replaceWith(bottomTemplate.content.cloneNode(true));
+
+    const tabs = [...document.querySelectorAll('.tab')];
+    const panels = [...document.querySelectorAll('.tab-panel')];
+    tabs.forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        tabs.forEach(t=>t.classList.remove('is-active'));
+        panels.forEach(p=>p.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        document.getElementById(tab.dataset.tab).classList.add('is-active');
+        tab.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+        const top = window.innerWidth >= 760 ? 82 : 88;
+        window.scrollTo({top,behavior:'smooth'});
+      });
+    });
+
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      item.addEventListener('click',()=>item.classList.toggle('open'));
+    });
+
+    document.addEventListener('click',(event)=>{
+      const copy = event.target.closest('.copy-button');
+      if(!copy) return;
+      navigator.clipboard?.writeText('6132803@vakinha.com.br');
+      copy.innerHTML = 'Copiado&nbsp; <i class="fa-regular fa-copy"></i>';
+      setTimeout(()=>copy.innerHTML = 'Copiar&nbsp; <i class="fa-regular fa-copy"></i>',1200);
+    });
+  </script>
+</body>
+</html>
